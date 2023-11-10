@@ -14,14 +14,16 @@ const App = function () {
     useEffect(() => {
         async function fetchWeather(){
             const oneWeather = await weatherService(city);
-            dispatch(setWeather(oneWeather))
-
+            if(oneWeather){
+                dispatch(setWeather(oneWeather))
+            }
             const moreWeather = await weathersService(city);
-            dispatch(setWeathers(moreWeather))
+            if(moreWeather){
+                dispatch(setWeathers(moreWeather))
+            }
         }
         fetchWeather()
     }, [city])
-    console.log(city)
     return (  
         <div className="App">
             <Header/>

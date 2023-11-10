@@ -10,17 +10,13 @@ const MyForm = function () {
         const city = event.target.value;
         setState(city)
     };
-    const handleKeyPress = (event) => {
-        if (event.key === 'Enter') {
-          handleSubmit();
-        }
-      };
-    const handleSubmit = () => {
+    const handleSubmit = (e) => {
+        e.preventDefault()
         dispatch(setCity(state));
     }
     return (  
-        <form onSubmit={e => e.preventDefault()} className={cl.myForm}>
-            <Input className={cl.myInput} onChange={handleInputChange} onKeyPress={handleKeyPress} variant='filled' placeholder='Введите город' />
+        <form onSubmit={e => (handleSubmit(e))} className={cl.myForm}>
+            <Input className={cl.myInput} onChange={handleInputChange} variant='filled' placeholder='Введите город' />
             <Button className={cl.myButton} onClick={handleSubmit} colorScheme='blue'>Погода</Button>
         </form>
     );

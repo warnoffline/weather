@@ -6,7 +6,6 @@ const weathersService = async (city) => {
         const api = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=${API_KEY}`
         try{
             const response = await axios.get(api)
-            console.log(response.data)
             return response.data;
         }
         catch(e){
