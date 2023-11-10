@@ -11,8 +11,8 @@ const MyForm = function () {
         setState(city)
     };
     const handleSubmit = (e) => {
-        e.preventDefault()
         dispatch(setCity(state));
+        e.preventDefault();
     }
     return (  
         <form onSubmit={e => (handleSubmit(e))} className={cl.myForm}>
