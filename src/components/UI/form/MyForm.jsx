@@ -11,7 +11,7 @@ const MyForm = function () {
         setState(city)
     };
     const handleSubmit = (e) => {
-        dispatch(setCity(state));
+        dispatch(setCgity(state));
         e.preventDefault();
     }
     return (  
