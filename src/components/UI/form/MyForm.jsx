@@ -11,7 +11,9 @@ const MyForm = function () {
         setState(city)
     };
     const handleSubmit = (e) => {
-        dispatch(setCgity(state));
+        const cityArray = state.split(' ').filter(x => x)
+        const cityString = cityArray.join(' ')
+        dispatch(setCity(cityString));
         e.preventDefault();
     }
     return (  
