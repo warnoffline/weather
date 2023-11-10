@@ -1,47 +1,18 @@
 import React from 'react';
-import { Card, Text, CardBody, Spinner, CardHeader } from '@chakra-ui/react';
-import Form from './Form';
-
-const CardWeather = function ({weather, setCity, fetchWeather}) {
+import { Card, CardHeader, CardBody } from '@chakra-ui/react'
+import MyCardUp from './UI/card/MyCardUp';
+import MyCardDown from './UI/card/MyCardDown';
+import './index.css'
+const CardWeather = function () {
     return (  
-        <div className='weather'>
-            <Form setCity={setCity} fetchWeather={fetchWeather}></Form>
-            {weather ? (
-                 <Card className='card'>
-                    <CardHeader className='cardHead'>
-                        <Text>{weather.name}</Text>
-                    </CardHeader>
-                    <CardBody className='cardBody'>
-                        <div className='cardLeft'>
-                            {
-                                weather.weather[0].main == 'Rain' ? (<img src='data:image/png;base64,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' alt='rain'/>) : 
-                                weather.weather[0].main == 'Clouds' ? (<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAEFUlEQVR4nO3XW1MaZwAG4C9NTCAqmioYEBCQg3F617/RTtuL9j+0k/ayo7RGjYkgHqDGUI7hkOmN9/YHtJ0mN52mNwkQkOPKUXZZxjjG2q+zu10KYVkBWZKLfWfe+2eZj+/dBYAPHz58+LztaB+XRLcC+CczQXzb4Mef6v14Qu/Hj/R+7Fjnw3JaH/p02os6pr3YF7M7+SHwrkT3E6Yh0YFq1RDAIVG9n2gF6nxUtY8wOO0likKNB4UaN/pK7So7tE5s+q3BZ3fh1VvB6l1DAD9tG+5BodpdJqtylaHSWXqtdByuyjdTwr7i9UFUPRPAn80EW8MpPDNc5TqEU85DqHQQLUGFvfRM6cqq+4KffYzPzgQrGXY41h78R6JFKLeTLcjt2Q84xRt8qMoQqBTY4PSvzgSn8DS8RMPh5MMCWdlOISex5zSc4D90wgG9H/+dIziUPsiTvbmd/0vqRK73/AF0voqZHY52BZft1ODw5nYOTvyQgxJb7khsyz6XWLN7Yhtye2wtKbsY3n80qXuEvWKC0786E5zG/w8vssInSHyWrNh6AMe3qI5tZs7GNpHd0fWDqa4eQOvF3P2DZ+vgCNn3N4hm4KglXR1ZQz7tCC/fTQk1XgxvdSUywembhQlO4ZnhYisz/MY61VFLGo6spc6Gzelv2n4AjRf97GLwQgfwAxY4VZE5BUWm5D9DpuTnrPApH6rSuMsLak85yjV8fKs1nMaTcHMKDpuIJuHg/SQuNKflDPC4QO0uW9Xu8kkHI9QCXn+z9AY+tEo0AQfvJ6DwXtzTgNd6cbHGU/6zv3CkY/j1e0TjULgSPxWsvFTU/qxq9+Ef7PBzR6juuLSG03gm+MgaE5w4MjSehJMV3N2H15Zjt8kHULnKWxdYz6ZzzjVcQOL34bWl2M9A6yrJp5ylk/7BM01wkbk1nMY3wJdj8OpSDA4sRcNA6Sgt9n49m+/yzuAJVjiJX4zCK3eiOFA4ir9xtZ5cwQcoPLy88BIHCnux2C28vfV882ZJ1vCDDHDhSltwsu99H3kBJh8WTrpfz17C453AyV4yRvaAbCd/wNnsvwFnuMth43Fhhl+5Q8Mp/KXviIYhmA99CWQPCr/Ww7lcz57BjQQ+fAq+jciBdDs/x/Xst4bvdwCPUPBaQw5yxKQ2RCmx5Y7Z4J2PUOL8EVpuDb+8wAYnj04FGJ9La+9BEmt2vW/rWYPHOodT+DNgjHzc+Ba6GBeMbyFP+gGvG6EmOI1nhNP4+fDXjN8AE+tZydgG8qQP69k53PjfsZmLfMT+IbMYF4xa0pYRS+aYG3i0C3j4FMyHnA1n/rzc2MgoROb0nMiU+kVkSiHDq4m/e7iezVeisQFcBcbwC2AM7QFj6CvyquTDhw8fPnz4gHcz/wIGMn8DKK/jPgAAAABJRU5ErkJggg==' alt='clouds'/>) :
-                                weather.weather[0].main == 'Clear' ? (<img src='data:image/png;base64,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' alt='clear'/>) :
-                                weather.weather[0].main == 'Mist' ? (<img src='data:image/png;base64,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' alt='mist'/>) :
-                                (<div></div>)
-                            }
-                            <Text>{weather.main.temp}°C</Text>
-                        </div>
-                        <div className='cardRight'>
-                            <Text>Влажность: {weather.main.humidity}%</Text>
-                            <Text>Скорость ветра: {weather.wind.speed} m/s</Text>
-                            <Text>Подробнее: {weather.weather[0].description}</Text>
-                        </div>
-                    </CardBody>
-               </Card>
-            ) 
-            : 
-            (
-                <Spinner
-                    thickness='4px'
-                    speed='0.65s'
-                    emptyColor='gray.200'
-                    color='blue.500'
-                    size='xl'
-                />
-            )
-            }
-        </div>
+        <Card className='card_all'>
+            <CardHeader className='card_header'>
+                <MyCardUp></MyCardUp>
+            </CardHeader>
+            <CardBody>
+                <MyCardDown></MyCardDown>
+            </CardBody>
+        </Card>
     );
 }
 

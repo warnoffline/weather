@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import Form from './components/Form';
-import CardWeather from './components/CardWeather';
+import React, { useEffect, useState } from 'react';
 import './App.css'
-const API_KEY = '68240ba49be1eb5ee6072c1954cfecc9'
+import weatherService from './services/weather.service';
+import weathersService from './services/weathers.service';
+import Header from './components/Header';
+import CardWeather from './components/CardWeather';
+import {setWeather, setWeathers} from './store/index'
+import { useSelector, useDispatch } from 'react-redux';
 
 const App = function () {
-    const [city, setCity] = useState('Kazan')
-    const [weather, setWeather] = useState(null)
-    async function fetchWeather() {
-        try{
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`)
-            setWeather(response.data)
-        }catch(e){
-            console.log(e)
-        }
-    }
+    const city = useSelector((state) => state.city);
+    const dispatch = useDispatch();
     
+    useEffect(() => {
+        async function fetchWeather(){
+            const oneWeather = await weatherService(city);
+            dispatch(setWeather(oneWeather))
+
+            const moreWeather = await weathersService(city);
+            dispatch(setWeathers(moreWeather))
+        }
+        fetchWeather()
+    }, [city])
+    console.log(city)
     return (  
         <div className="App">
-            <CardWeather setCity={setCity} fetchWeather={fetchWeather} weather={weather}></CardWeather>
+            <Header/>
+            <main className='main'>
+                <CardWeather className='CardWeather' />
+            </main>
         </div>
     );
 }
