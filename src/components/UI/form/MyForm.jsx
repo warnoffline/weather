@@ -16,8 +16,8 @@ const MyForm = function () {
     }
     return (  
         <form onSubmit={e => (handleSubmit(e))} className={cl.myForm}>
-            <Input className={cl.myInput} onChange={handleInputChange} variant='filled' placeholder='Введите город' />
-            <Button className={cl.myButton} onClick={handleSubmit} colorScheme='blue'>Погода</Button>
+            <Input className={cl.myInput} onChange={e => handleInputChange(e)} variant='filled' placeholder='Введите город' />
+            <Button className={cl.myButton} onClick={handleSubmit}colorScheme='blue'>Погода</Button>
         </form>
     );
 }

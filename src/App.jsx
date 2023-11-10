@@ -14,13 +14,9 @@ const App = function () {
     useEffect(() => {
         async function fetchWeather(){
             const oneWeather = await weatherService(city);
-            if(oneWeather){
-                dispatch(setWeather(oneWeather))
-            }
+            dispatch(setWeather(oneWeather))
             const moreWeather = await weathersService(city);
-            if(moreWeather){
-                dispatch(setWeathers(moreWeather))
-            }
+            dispatch(setWeathers(moreWeather))
         }
         fetchWeather()
     }, [city])

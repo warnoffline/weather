@@ -4,7 +4,6 @@ const initialState = {
     city: 'Kazan',
     weather: null,
     weathers: null,
-    btn: null
 };
 
 export const store = createStore((state = initialState, action) => {
@@ -15,8 +14,6 @@ export const store = createStore((state = initialState, action) => {
             return {...state, weather: action.payload};
         case 'SET_WEATHERS':
             return {...state, weathers: action.payload};
-        case 'SET_BTN':
-            return {...state, btn: action.payload}
         default: 
             return state;
     }
@@ -42,10 +39,3 @@ return {
     payload: weathers
 };
 };
-
-export const setBtn = (btn) => {
-    return{
-        type: 'SET_BTN',
-        payload: btn
-    }
-}
