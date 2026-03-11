@@ -1,0 +1,14 @@
+/* Header */
+.header{
+    background-color: #33385A;
+    width: 100%;
+    min-height: 15vh;
+    display: flex;
+
+}
+
+/* CardWeather */
+.card_all{
+    padding: 40px 0;
+}
+

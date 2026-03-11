@@ -1,0 +1,28 @@
+.myForm{
+    width: 40%;
+    min-height: 15vh;
+    background-color: #33385A;
+    display: flex;
+    align-items: center;
+}
+.myInput{
+    margin-left: 5%;
+    margin-right: 2%;
+    color: #33385A;
+}
+.myInput:focus{
+    color: white;
+}
+.myButton{
+    padding: 1% 3%;
+}
+@media screen and (max-width: 599px) and (min-width: 300px) {
+    .myForm{
+        width: 70%;
+    }
+}
+@media screen and (max-width: 299px) {
+    .myForm{
+        width: 90%;
+    }
+}
